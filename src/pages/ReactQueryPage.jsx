@@ -14,6 +14,8 @@ const ReactQueryPage = () => {
     select: (data) => {
       return data.data;
     },
+    // 5초가 지나면 캐시를 비움
+    gcTime: 5000
   });
   console.log("ddd", data, isLoading);
   console.log("error", isError, error);
