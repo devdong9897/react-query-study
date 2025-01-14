@@ -10,6 +10,10 @@ const ReactQueryPage = () => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPost,
+    retry: 1,
+    select: (data) => {
+      return data.data;
+    },
   });
   console.log("ddd", data, isLoading);
   console.log("error", isError, error);
