@@ -11,11 +11,12 @@ const ReactQueryPage = () => {
     queryKey: ["posts"],
     queryFn: fetchPost,
     retry: 1,
+    // 1분 동안 최신데이터, 1분이 지나면 다시 호출
+    // 오래된 데이터를 봐도 괜찮다 할 때 사용.
+    staleTime: 60000, // 1분간 api 호출 금지
     select: (data) => {
       return data.data;
-    },
-    // 5초가 지나면 캐시를 비움
-    gcTime: 5000
+    }
   });
   console.log("ddd", data, isLoading);
   console.log("error", isError, error);
