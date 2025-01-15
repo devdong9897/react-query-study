@@ -11,8 +11,8 @@ const ReactQueryPage = () => {
     queryKey: ["posts"],
     queryFn: fetchPost,
     retry: 1,
-    // 3초마다 api 호출
-    refetchInterval: 3000,
+    // 컴포넌트가 시작될 때 api호출을 할지말지 결정
+    refetchOnMount: false,
     select: (data) => {
       return data.data;
     },
