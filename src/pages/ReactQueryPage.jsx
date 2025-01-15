@@ -7,12 +7,10 @@ const ReactQueryPage = () => {
     return axios.get("http://localhost:3004/posts");
   };
   // useQuery: 데이터를 서버에서 가져오는 기능을 하는 React Hook.
-  const { isLoading, data, isError, error } = useQuery({
+  const { isLoading, data, isError, error, refetch } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPost,
     retry: 1,
-    // 다른 창에 있다가 해당화면으로 들어오면 api가 바로바로 호출된다.
-    refetchOnWindowFocus: true,
     select: (data) => {
       return data.data;
     },
@@ -31,6 +29,7 @@ const ReactQueryPage = () => {
       {data.map((item) => (
         <div key={item.id}>{item.title}</div>
       ))}
+      <button onClick={refetch}>post리스트 다시 들고오기</button>
     </div>
   );
 };
