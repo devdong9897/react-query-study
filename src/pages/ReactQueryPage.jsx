@@ -11,8 +11,8 @@ const ReactQueryPage = () => {
     queryKey: ["posts"],
     queryFn: fetchPost,
     retry: 1,
-    // 5초가 지나면 캐시 지움
-    gcTime: 5000,
+    // 3초마다 api 호출
+    refetchInterval: 3000,
     select: (data) => {
       return data.data;
     },
