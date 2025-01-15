@@ -11,8 +11,8 @@ const ReactQueryPage = () => {
     queryKey: ["posts"],
     queryFn: fetchPost,
     retry: 1,
-    // 컴포넌트가 시작될 때 api호출을 할지말지 결정
-    refetchOnMount: false,
+    // 다른 창에 있다가 해당화면으로 들어오면 api가 바로바로 호출된다.
+    refetchOnWindowFocus: true,
     select: (data) => {
       return data.data;
     },
