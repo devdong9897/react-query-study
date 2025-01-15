@@ -14,6 +14,8 @@ const ReactQueryPage = () => {
     select: (data) => {
       return data.data;
     },
+    // 맨 처음(새로고침을 할 때)에는 api를 호출되지 않고 버튼을 클릭했을 때만 호출할 때.
+    enabled: false,
   });
   console.log("ddd", data, isLoading);
   console.log("error", isError, error);
@@ -26,7 +28,7 @@ const ReactQueryPage = () => {
   }
   return (
     <div>
-      {data.map((item) => (
+      {data?.map((item) => (
         <div key={item.id}>{item.title}</div>
       ))}
       <button onClick={refetch}>post리스트 다시 들고오기</button>
